@@ -11,7 +11,14 @@ class Filters extends React.Component {
       <div className="Filters">
         <div className="Filters-item">
           <h4>
-            <input />
+            <input
+              className="inputField"
+              type="text"
+              name="searchField"
+              value={this.props.searchField}
+              placeholder="Search for Restaurants"
+              onChange={this.props.onSearchFieldChange}
+            />
           </h4>
         </div>
         <div className="Filters-item">

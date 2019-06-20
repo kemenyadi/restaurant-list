@@ -5,13 +5,39 @@ import data from "../constants/Sample - Restaurant list - technical assignment (
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
+    this.processJSON = this.processJSON.bind(this);
   }
+
+  processJSON() {
+    let matches = [];
+    if (this.props.searchField) {
+      let searchMatchREGEX = new RegExp(this.props.searchField, "i");
+      data.restaurants.forEach((restaurant, key) => {
+        if (restaurant.name.search(searchMatchREGEX) === -1) {
+        } else {
+          matches.push(restaurant);
+        }
+      });
+    } else {
+      matches = data.restaurants;
+    }
+    return matches;
+  }
+
   render() {
+    let cards = [];
+    this.processJSON().forEach((restaurant, key) => {
+      cards.push(
+        <Card
+          name={restaurant.name}
+          rating={restaurant.sortingValues.ratingAverage}
+        />
+      );
+    });
     return (
       <div className="Dashboard">
         <h1>Restaurants:</h1>
-        <Card title="Pizza" rating="2" />
-        <Card title="Döner" rating="3" />
+        {cards}
       </div>
     );
   }
