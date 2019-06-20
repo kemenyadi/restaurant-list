@@ -1,0 +1,51 @@
+.App {
+}
+
+.Header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 64px;
+  background-color: #ff8000;
+  color: white;
+}
+
+.logo {
+  height: 52px;
+}
+
+.Dashboard {
+  display: flex;
+  flex-direction: column;
+}
+
+.Card {
+  width: 66vw;
+  height: 50px;
+  margin: 2px;
+  background-color: whitesmoke;
+
+  justify-content: space-around;
+  display: flex;
+  align-items: center;
+}
+
+.Content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.Filters {
+  margin-top: 22px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Filters-item {
+  padding: 10px;
+  background-color: whitesmoke;
+}
