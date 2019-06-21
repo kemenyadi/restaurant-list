@@ -16,17 +16,19 @@
 }
 
 .Dashboard {
+  width: 50vw;
+
   display: flex;
   flex-direction: column;
 }
 
 .Card {
-  width: 66vw;
   height: 50px;
   margin: 2px;
+  padding-left: 2vw;
+  padding-right: 2vw;
   background-color: whitesmoke;
-
-  justify-content: space-around;
+  justify-content: space-between;
   display: flex;
   align-items: center;
 }
@@ -42,7 +44,6 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .Filters-item {
