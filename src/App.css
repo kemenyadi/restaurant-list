@@ -1,3 +1,7 @@
+:root {
+  --TAorange: #ff8000;
+}
+
 .App {
 }
 
@@ -7,7 +11,7 @@
   align-items: center;
 
   height: 64px;
-  background-color: #ff8000;
+  background-color: var(--TAorange);
   color: white;
 }
 
@@ -23,14 +27,44 @@
 }
 
 .Card {
-  height: 50px;
+  height: 90px;
   margin: 2px;
   padding-left: 2vw;
   padding-right: 2vw;
   background-color: whitesmoke;
-  justify-content: space-between;
+  justify-content: unset;
   display: flex;
   align-items: center;
+}
+
+.Card:hover {
+  background-color: unset;
+}
+
+.Card div h3 {
+  margin: unset;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.Card div h6 {
+  letter-spacing: 0.5pt;
+  margin: 0px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  margin-right: 4vw;
+}
+
+.green {
+  color: limegreen;
+}
+
+.orange {
+  color: var(--TAorange);
+}
+
+.red {
+  color: red;
 }
 
 .Content {
@@ -49,4 +83,10 @@
 .Filters-item {
   padding: 10px;
   background-color: whitesmoke;
+}
+
+.Filters-item input {
+  border: 0;
+  padding: 6px;
+  font-size: 12pt;
 }
