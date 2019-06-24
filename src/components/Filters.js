@@ -10,25 +10,34 @@ class Filters extends React.Component {
     return (
       <div className="Filters">
         <div className="Filters-item">
-          <h4>
-            <input
-              className="inputField"
-              type="text"
-              name="searchField"
-              value={this.props.searchField}
-              placeholder="Search for Restaurants"
-              onChange={this.props.onSearchFieldChange}
-            />
-          </h4>
+          <input
+            className="inputField"
+            type="text"
+            name="searchField"
+            value={this.props.searchField}
+            placeholder="Search for Restaurants"
+            onChange={this.props.handleFieldChange}
+          />
         </div>
         <div className="Filters-item">
-          <h4>Distance</h4>
-        </div>
-        <div className="Filters-item">
-          <h4>Rating</h4>
-        </div>
-        <div className="Filters-item">
-          <h4>Popularity</h4>
+          <select
+            value={this.props.sortField}
+            className=""
+            name="sortField"
+            onChange={this.props.handleFieldChange}
+          >
+            <option className="bold" value="" selected>
+              Sort by:
+            </option>
+            <option value="bestMatch">Best Match</option>
+            <option value="newest">Newest</option>
+            <option value="ratingAverage">Rating Average</option>
+            <option value="distance">Distance</option>
+            <option value="popularity">Popularity</option>
+            <option value="averageProductPrice">Average Product Price</option>
+            <option value="deliveryCosts">Delivery Costs</option>
+            <option value="minimumCosts">Minimum Costs</option>
+          </select>
         </div>
       </div>
     );

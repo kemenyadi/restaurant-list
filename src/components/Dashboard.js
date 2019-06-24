@@ -27,7 +27,13 @@ class Dashboard extends React.Component {
   render() {
     let cards = [];
     this.processJSON().forEach((restaurant, key) => {
-      cards.push(<Card restaurant={restaurant} />);
+      cards.push(
+        <Card
+          restaurant={restaurant}
+          handleLike={this.props.handleLike}
+          likedRestaurants={this.props.likedRestaurants}
+        />
+      );
     });
     return (
       <div className="Dashboard">

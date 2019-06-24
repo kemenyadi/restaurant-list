@@ -9,20 +9,28 @@ class Card extends React.Component {
   }
 
   ColorStatus(status) {
+    let className;
+
     switch (status) {
       case "open":
-        return <div className="green">{Capitalize(status)}</div>;
+        className = "green";
+        break;
       case "order ahead":
-        return <div className="orange">{Capitalize(status)}</div>;
+        className = "orange";
+        break;
       case "closed":
-        return <div className="red">{Capitalize(status)}</div>;
+        className = "red";
+        break;
     }
+    return <div className={className}>{Capitalize(status)}</div>;
   }
 
   render() {
-    const TAorange = getComputedStyle(document.body).getPropertyValue(
-      "--TAorange"
-    );
+    const bodyStyle = getComputedStyle(document.body),
+      TAorange = bodyStyle.getPropertyValue("--TAorange"),
+      starDimension = bodyStyle.getPropertyValue("--starDimension"),
+      starEmptyColor = bodyStyle.getPropertyValue("--starEmptyColor"),
+      likeOpacity = bodyStyle.getPropertyValue("--likeOpacity");
     let restaurant = this.props.restaurant;
 
     return (
@@ -30,12 +38,23 @@ class Card extends React.Component {
         <div>
           <h6>{this.ColorStatus(restaurant.status)}</h6>
         </div>
+        <div
+          onClick={() => this.props.handleLike(restaurant.name)}
+          className="cardMiddle"
+          style={{
+            opacity: this.props.likedRestaurants.includes(restaurant.name)
+              ? likeOpacity
+              : undefined
+          }}
+        >
+          ❤️
+        </div>
         <div>
           <h3>{restaurant.name}</h3>
           <StarRatings
             rating={restaurant.sortingValues.ratingAverage}
-            starDimension="20px"
-            starEmptyColor="white"
+            starDimension={starDimension}
+            starEmptyColor={starEmptyColor}
             starRatedColor={TAorange}
           />
         </div>

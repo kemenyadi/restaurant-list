@@ -6,11 +6,12 @@ import Filters from "./Filters";
 class Content extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { searchField: "" };
-    this.handleChangeField = this.handleChangeField.bind(this);
+    this.state = { searchField: "", sortField: "", likedRestaurants: [] };
+    this.handleFieldChange = this.handleFieldChange.bind(this);
+    this.handleLike = this.handleLike.bind(this);
   }
 
-  handleChangeField(event) {
+  handleFieldChange(event) {
     const value = event.target.value,
       name = event.target.name;
 
@@ -19,14 +20,33 @@ class Content extends React.Component {
     });
   }
 
+  handleLike(restaurantID) {
+    if (!this.state.likedRestaurants.includes(restaurantID)) {
+      this.setState({
+        likedRestaurants: this.state.likedRestaurants.concat([restaurantID])
+      });
+    } else {
+      this.setState({
+        likedRestaurants: this.state.likedRestaurants.filter(
+          item => item !== restaurantID
+        )
+      });
+    }
+  }
+
   render() {
     return (
       <div className="Content">
         <Filters
           searchField={this.state.searchField}
-          onSearchFieldChange={this.handleChangeField}
+          handleFieldChange={this.handleFieldChange}
+          sortField={this.state.sortField}
         />
-        <Dashboard searchField={this.state.searchField} />
+        <Dashboard
+          searchField={this.state.searchField}
+          handleLike={this.handleLike}
+          likedRestaurants={this.state.likedRestaurants}
+        />
       </div>
     );
   }
