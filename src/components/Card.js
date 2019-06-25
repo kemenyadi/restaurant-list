@@ -6,6 +6,7 @@ class Card extends React.Component {
   constructor(props) {
     super(props);
     this.ColorStatus = this.ColorStatus.bind(this);
+    this.checkPriceFree = this.checkPriceFree.bind(this);
   }
 
   ColorStatus(status) {
@@ -25,13 +26,24 @@ class Card extends React.Component {
     return <div className={className}>{Capitalize(status)}</div>;
   }
 
+  checkPriceFree(price) {
+    if (price == 0) {
+      return <span className="green">NONE</span>;
+    } else {
+      return "€" + price;
+    }
+  }
+
   render() {
     const bodyStyle = getComputedStyle(document.body),
       TAorange = bodyStyle.getPropertyValue("--TAorange"),
       starDimension = bodyStyle.getPropertyValue("--starDimension"),
       starEmptyColor = bodyStyle.getPropertyValue("--starEmptyColor"),
       likeOpacity = bodyStyle.getPropertyValue("--likeOpacity");
-    let restaurant = this.props.restaurant;
+    let restaurant = this.props.restaurant,
+      minCost = (restaurant.sortingValues.minCost / 100).toFixed(2),
+      distance = (restaurant.sortingValues.distance / 1000).toFixed(2),
+      deliveryCosts = (restaurant.sortingValues.deliveryCosts / 100).toFixed(2);
 
     return (
       <div className="Card">
@@ -58,8 +70,10 @@ class Card extends React.Component {
             starRatedColor={TAorange}
           />
         </div>
-        <div className="CardDistance">
-          <h4>{restaurant.sortingValues.distance / 1000} km</h4>
+        <div className="CardDetails">
+          <h4>{distance} km</h4>
+          <h6>Minimum: {this.checkPriceFree(minCost)}</h6>
+          <h6>Delivery: {this.checkPriceFree(deliveryCosts)}</h6>
         </div>
       </div>
     );

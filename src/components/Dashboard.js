@@ -9,65 +9,56 @@ class Dashboard extends React.Component {
   }
 
   processJSON() {
-    let matches = [];
-    //Calculate Top Restaurants according to formula
-
-    //Filter for search query
-    if (this.props.searchField) {
+    let matches = [],
       //define case insensitive query
-      let searchMatchREGEX = new RegExp(this.props.searchField, "i");
-      data.restaurants.forEach((restaurant, key) => {
-        if (restaurant.name.search(searchMatchREGEX) === -1) {
-          //no match
-        } else {
-          //on match push
-          matches.push(restaurant);
-        }
-      });
-    } else {
-      matches = data.restaurants;
-    }
+      searchMatchREGEX = new RegExp(this.props.searchField, "i");
+
+    data.restaurants.forEach((restaurant, key) => {
+      //Calculate Top Restaurants according to formula
+      let sValues = restaurant.sortingValues;
+      sValues.topRestaurants =
+        sValues.distance * sValues.popularity + sValues.ratingAverage;
+      this.props.likedRestaurants.includes(restaurant.name)
+        ? (restaurant.liked = 1)
+        : (restaurant.liked = 0);
+      //Filter for search query
+      if (restaurant.name.search(searchMatchREGEX) === -1) {
+        //no match
+      } else {
+        //on match push
+        matches.push(restaurant);
+      }
+    });
+
     //Sort according to Sorting selection
     if (this.props.sortField) {
       let temp = matches.slice(), //non mutating copy
-        sortDescending = ["ratingAverage", "popularity"];
+        sortDescending = ["ratingAverage", "popularity", "topRestaurants"];
       temp.sort(
         (a, b) =>
-          a["sortingValues"][this.props.sortField] -
-          b["sortingValues"][this.props.sortField]
+          a.sortingValues[this.props.sortField] -
+          b.sortingValues[this.props.sortField]
       );
-
+      //these sorting values need to be sorted descending
       if (sortDescending.includes(this.props.sortField)) {
         temp.reverse();
       }
 
       matches = temp;
     }
+
     //Sort according to Openings state
-    matches.sort((a, b) => {
-      if (a.status === "open") {
-        return -1;
-      }
-    });
-    matches.sort((a, b) => {
-      if (a.status === "order ahead") {
-        return -1;
-      }
-    });
-    matches.sort((a, b) => {
-      if (a.status === "closed") {
-        return -1;
-      }
-    });
-    matches.reverse();
+    //ordering map for efficient lookup of sortIndex
+    let ordering = {},
+      sortOrder = ["open", "order ahead", "closed"];
+    for (let i = 0; i < sortOrder.length; i++) ordering[sortOrder[i]] = i;
+
+    matches.sort((a, b) => ordering[a.status] - ordering[b.status]);
+
     //Sort according to Favourites
     if (this.props.likedRestaurants) {
       matches.sort((a, b) => {
-        if (this.props.likedRestaurants.includes(a.name)) {
-          return -1;
-        } else {
-          return 1;
-        }
+        return b.liked - a.liked;
       });
     }
     return matches;

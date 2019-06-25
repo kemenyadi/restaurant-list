@@ -11,7 +11,6 @@ class Filters extends React.Component {
       <div className="Filters">
         <div className="Filters-item">
           <input
-            className="inputField"
             type="text"
             name="searchField"
             value={this.props.searchField}
@@ -22,12 +21,14 @@ class Filters extends React.Component {
         <div className="Filters-item">
           <select
             value={this.props.sortField}
-            className=""
             name="sortField"
             onChange={this.props.handleFieldChange}
           >
             <option className="bold" value="" selected>
               Sort by:
+            </option>
+            <option value="topRestaurants" className="italic">
+              Top Restaurants
             </option>
             <option value="bestMatch">Best Match</option>
             <option value="newest">Newest</option>

@@ -24,7 +24,7 @@
 }
 
 .Dashboard {
-  width: 50vw;
+  width: 66vw;
 
   display: flex;
   flex-direction: column;
@@ -51,18 +51,15 @@
   margin-bottom: 5px;
 }
 
-.Card div h6 {
+.CardStatus {
   letter-spacing: 0.5pt;
   margin: 0px;
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  margin-right: 2vw;
-}
-.CardStatus {
 }
 
 .CardLike {
-  margin-right: 2vw;
+  margin-right: 1vw;
   font-size: 24pt;
   opacity: var(--unlikeOpacity);
 }
@@ -74,10 +71,14 @@
 .CardNameRating {
 }
 
-.CardDistance {
-  flex-grow: 10;
-  justify-content: flex-end;
-  display: flex;
+.CardDetails {
+  width: 100px;
+  margin-left: auto;
+}
+
+.CardDetails h4,
+.CardDetails h6 {
+  margin: 0;
 }
 
 .green {
@@ -117,6 +118,14 @@
   font-size: 12pt;
 }
 
+.Filters-item select {
+  width: 100%;
+}
+
 .bold {
   font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
 }
