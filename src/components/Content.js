@@ -44,6 +44,7 @@ class Content extends React.Component {
         />
         <Dashboard
           searchField={this.state.searchField}
+          sortField={this.state.sortField}
           handleLike={this.handleLike}
           likedRestaurants={this.state.likedRestaurants}
         />

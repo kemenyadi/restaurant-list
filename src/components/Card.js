@@ -35,12 +35,9 @@ class Card extends React.Component {
 
     return (
       <div className="Card">
-        <div>
-          <h6>{this.ColorStatus(restaurant.status)}</h6>
-        </div>
         <div
           onClick={() => this.props.handleLike(restaurant.name)}
-          className="cardMiddle"
+          className="CardLike"
           style={{
             opacity: this.props.likedRestaurants.includes(restaurant.name)
               ? likeOpacity
@@ -49,7 +46,10 @@ class Card extends React.Component {
         >
           ❤️
         </div>
-        <div>
+        <div className="CardStatus">
+          <h6>{this.ColorStatus(restaurant.status)}</h6>
+        </div>
+        <div className="CardNameRating">
           <h3>{restaurant.name}</h3>
           <StarRatings
             rating={restaurant.sortingValues.ratingAverage}
@@ -57,6 +57,9 @@ class Card extends React.Component {
             starEmptyColor={starEmptyColor}
             starRatedColor={TAorange}
           />
+        </div>
+        <div className="CardDistance">
+          <h4>{restaurant.sortingValues.distance / 1000} km</h4>
         </div>
       </div>
     );

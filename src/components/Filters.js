@@ -36,7 +36,7 @@ class Filters extends React.Component {
             <option value="popularity">Popularity</option>
             <option value="averageProductPrice">Average Product Price</option>
             <option value="deliveryCosts">Delivery Costs</option>
-            <option value="minimumCosts">Minimum Costs</option>
+            <option value="minCost">Minimum Costs</option>
           </select>
         </div>
       </div>

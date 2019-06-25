@@ -58,15 +58,26 @@
   text-orientation: mixed;
   margin-right: 2vw;
 }
+.CardStatus {
+}
 
-.cardMiddle {
+.CardLike {
   margin-right: 2vw;
   font-size: 24pt;
   opacity: var(--unlikeOpacity);
 }
 
-.cardMiddle:hover {
+.CardLike:hover {
   opacity: var(--likeOpacity);
+}
+
+.CardNameRating {
+}
+
+.CardDistance {
+  flex-grow: 10;
+  justify-content: flex-end;
+  display: flex;
 }
 
 .green {
