@@ -77,8 +77,21 @@
 }
 
 .CardDetails h4,
-.CardDetails h6 {
+.CardDetails h6,
+.CardOther h6 {
   margin: 0;
+}
+
+.CardOther {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 10;
+}
+
+.CardOther div {
+  margin-right: 10px;
+  padding: 10px;
+  background-color: var(--TAorange);
 }
 
 .green {

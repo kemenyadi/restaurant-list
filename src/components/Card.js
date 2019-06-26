@@ -70,6 +70,17 @@ class Card extends React.Component {
             starRatedColor={TAorange}
           />
         </div>
+        <code className="CardOther italic">
+          <div className>
+            <h6>bestMatch: {restaurant.sortingValues.bestMatch}</h6>
+            <h6>newest: {restaurant.sortingValues.newest}</h6>
+            <h6>popularity: {restaurant.sortingValues.popularity}</h6>
+            <h6>
+              averageProductPrice:{" "}
+              {restaurant.sortingValues.averageProductPrice}
+            </h6>
+          </div>
+        </code>
         <div className="CardDetails">
           <h4>{distance} km</h4>
           <h6>Minimum: {this.checkPriceFree(minCost)}</h6>
