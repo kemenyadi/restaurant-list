@@ -1,6 +1,6 @@
 import React from "react";
 import StarRatings from "react-star-ratings";
-import { Capitalize } from "../constants/constants";
+import { Capitalize } from "../methods";
 
 class Card extends React.Component {
   constructor(props) {
