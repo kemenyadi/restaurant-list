@@ -1,11 +1,6 @@
 import React from "react";
-import data from "../constants/Sample - Restaurant list - technical assignment (PHP Javascript).json";
 
 class Filters extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="Filters">
@@ -24,7 +19,7 @@ class Filters extends React.Component {
             name="sortField"
             onChange={this.props.handleFieldChange}
           >
-            <option className="bold" value="" selected>
+            <option className="bold" value="">
               Sort by:
             </option>
             <option value="topRestaurants" className="italic">

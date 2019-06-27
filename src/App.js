@@ -1,19 +1,18 @@
 import React from "react";
 import "./App.css";
 import logo from "./constants/thuisbezorgd.png";
-import Content from "./components/Content";
+import Dashboard from "./components/Dashboard";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div className="App">
         <div className="Header">
-          <img className="logo" src={logo} />
+          <img className="logo" src={logo} alt="thuisbezorgd"/>
         </div>
-        <Content />
+        <div className="Content">
+          <Dashboard />
+        </div>
       </div>
     );
   }

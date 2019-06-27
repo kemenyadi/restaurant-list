@@ -71,7 +71,7 @@ class Card extends React.Component {
           />
         </div>
         <code className="CardOther italic">
-          <div className>
+          <div>
             <h6>bestMatch: {restaurant.sortingValues.bestMatch}</h6>
             <h6>newest: {restaurant.sortingValues.newest}</h6>
             <h6>popularity: {restaurant.sortingValues.popularity}</h6>
